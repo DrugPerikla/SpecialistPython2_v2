@@ -61,13 +61,19 @@ class LinkedList:
         """
         # TODO: реализовать вставку
         raise TypeError("Not implemented")
-
-    def find(self, value):
-        """
-        Ищет элемент со зачением value
-        :param value: значение искомого элемента
-        :return: индекс искомого элемента, или ???, если элемент не найден
-        """
+        self.length += 1
+        if index==0:
+            self.push(value)
+            return
+        if index==self.length:
+            self.add()
+            return
+        current_node=self.first
+        for _ in range(1,index):
+            current_node=current_node.next
+        new_node=Node(value,current_node.next)
+        current_node.next=new_node
+        return
         # TODO: реализовать поиск элемента
         #   подумать над возвращаемым значением, если элемент со значение value не найден
         raise TypeError("Not implemented")
@@ -86,8 +92,12 @@ class LinkedList:
 if __name__ == "__main__":
     L = LinkedList()
     print("empty list = ", L)
+    L.clear(1)
+    print("list = ", L)
     L.add(1)
+    print("list = ", L)
     L.add(2)
+    print("list = ", L)
     L.add(3)
 
     print("list = ", L)
@@ -106,7 +116,10 @@ if __name__ == "__main__":
     # print(L[0])
     # L[0] = "new"
     # print(L[0])
+    
 
     # TODO: реализовать создание нового списка с задание начальных элементов
     # L = LinkedList(2, 4, 6, -12)
     # print(L)
+ L.insert(-7, 7)
+    print("list = ", L)
